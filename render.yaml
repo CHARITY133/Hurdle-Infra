@@ -11,3 +11,14 @@ services:
         value: 5000
       - key: DATABASE_URL
         sync: false
+
+  - type: web
+    name: hurdle-frontend
+    runtime: static
+    rootDir: frontend
+    buildCommand: npm install && npm run build
+    staticPublishPath: dist
+    plan: free
+    envVars:
+      - key: VITE_API_URL
+        value: https://hurdle-backend.onrender.com
